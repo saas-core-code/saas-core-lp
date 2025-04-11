@@ -21,23 +21,44 @@ const HeroSection = ({
 }) => {
   return (
     <section 
-      className={`relative w-full py-16 ${className}`}
       style={{ 
         backgroundColor: "#FFF0F5", // Soft pink background
+        minHeight: "100vh",
+        width: "100%",
+        padding: "2rem 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
       }}
+      className={className}
     >
-      <div className="container mx-auto px-4 flex flex-col items-center">
+      <div style={{
+        width: "100%",
+        maxWidth: "1200px",
+        margin: "0 auto",
+        padding: "0 1rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}>
         {/* Vertical Catchcopy Text */}
-        <div className="mb-8 text-center">
+        <div style={{ marginBottom: "2rem", textAlign: "center" }}>
           <h1 
-            className="text-4xl md:text-5xl font-bold text-white writing-vertical-rl"
             style={{ 
               writingMode: "vertical-rl", 
-              textOrientation: "upright",
-              textShadow: "1px 1px 3px rgba(0,0,0,0.2)",
+              textOrientation: "mixed",
               color: "#FFFFFF",
+              fontSize: "2.5rem",
+              fontWeight: "bold",
               lineHeight: "1.5",
               letterSpacing: "0.05em",
+              textShadow: "1px 1px 3px rgba(0,0,0,0.2)",
+              margin: "0 auto",
+              padding: "1rem 0",
+              height: "auto",
+              maxHeight: "80vh",
             }}
           >
             {catchcopy}
@@ -45,28 +66,47 @@ const HeroSection = ({
         </div>
 
         {/* Smartphone Mockup Image */}
-        <div className="relative mb-10 w-full max-w-xs">
+        <div style={{ marginBottom: "2rem", width: "100%", maxWidth: "300px" }}>
           <img 
             src={phoneImageSrc} 
             alt="Smartphone Mockup" 
-            className="w-full h-auto"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              margin: "0 auto",
+            }}
           />
         </div>
 
         {/* Circular Badges */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
+        <div style={{ 
+          display: "flex", 
+          flexWrap: "wrap", 
+          justifyContent: "center", 
+          gap: "1.5rem",
+          marginBottom: "2rem",
+          width: "100%",
+        }}>
           {badges.map((badge, index) => (
             <div 
               key={index}
-              className="rounded-full flex items-center justify-center p-4 w-24 h-24 md:w-28 md:h-28"
               style={{ 
                 backgroundColor: "#FF6B8A", 
                 color: "white",
+                borderRadius: "50%",
+                width: "120px",
+                height: "120px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                border: "2px solid white"
+                border: "2px solid white",
+                padding: "0.5rem",
+                fontWeight: "bold",
               }}
             >
-              <span className="text-center text-sm md:text-base font-bold">
+              <span style={{ textAlign: "center", fontSize: "1rem" }}>
                 {badge}
               </span>
             </div>
@@ -76,11 +116,20 @@ const HeroSection = ({
         {/* CTA Button */}
         <button
           onClick={onCtaClick}
-          className="px-8 py-3 rounded-full text-white font-bold text-lg transition-transform transform hover:scale-105"
           style={{ 
             backgroundColor: "#4CAF50", // Green color
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
+            color: "white",
+            padding: "0.75rem 2rem",
+            borderRadius: "9999px",
+            fontSize: "1.25rem",
+            fontWeight: "bold",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            border: "none",
+            cursor: "pointer",
+            transition: "transform 0.2s ease",
           }}
+          onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+          onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
         >
           {ctaText}
         </button>
